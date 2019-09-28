@@ -40,11 +40,11 @@ server.use(session(sessionConfig)); // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
 server.post('/register', (req, res) => {
-    let { email, password } = req.body;
+    let { name, email, password } = req.body;
 
     const hash = bcrypt.hashSync(password, 8); // it's 2 ^ 8, not 8 rounds
 
-    adminsModel.add({ email, password: hash })
+    adminsModel.add({ name, email, password: hash })
         .then(saved => {
             res.status(201).json(saved);
         })
