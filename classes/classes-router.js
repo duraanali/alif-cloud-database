@@ -22,17 +22,17 @@ server.get('/', authenticate, (req, res) => {
 });
 
 server.post('/', authenticate, (req, res) => {
-    const studentData = req.body;
+    const classesData = req.body;
 
-    const parentId = req.body.parent_id
-    console.log('parentid', req.body.parent_id)
+    const teacherId = req.body.teacher_id
+    console.log('teacherid', req.body.teacher_id)
 
-    studentData.parent_id = parentId;
-    studentsModel.postStudent(studentData)
-        .then((studentsModel) => {
-            res.status(200).json(studentsModel)
+    classesData.teacher_id = teacherId;
+    classesModel.postClass(classesData)
+        .then((classesModel) => {
+            res.status(200).json(classesModel)
         }).catch((err) => {
-            res.status(500).json({ message: 'Error adding student' })
+            res.status(500).json({ message: 'Error adding class' })
         });
 });
 
@@ -40,21 +40,21 @@ server.post('/', authenticate, (req, res) => {
 server.put('/:id', authenticate, (req, res) => {
     const id = req.params.id;
     const changes = req.body;
-    studentsModel.updateStudent(id, changes)
-        .then((studentsModel) => {
-            res.status(200).json({ message: `Student ${id} updated!` })
+    classesModel.updateClass(id, changes)
+        .then((classesModel) => {
+            res.status(200).json({ message: `class ${id} updated!` })
         }).catch((err) => {
-            res.status(500).json({ message: 'Error Updating Question' })
+            res.status(500).json({ message: 'Error Updating class' })
         });
 });
 
 server.delete('/:id', authenticate, (req, res) => {
     const id = req.params.id;
-    studentsModel.removeStudent(id)
-        .then(studentsModel => {
-            res.status(204).json({ message: `Student ${id} Deleted!` })
+    classesModel.removeClass(id)
+        .then(classesModel => {
+            res.status(204).json({ message: `class ${id} Deleted!` })
         }).catch((err) => {
-            res.status(500).json({ message: 'Error Deleting Question' })
+            res.status(500).json({ message: 'Error Deleting class' })
         });
 });
 

@@ -11,6 +11,7 @@ const adminsModel = require('./admins-model.js');
 const restricted = require('../auth/restricted-middleware.js');
 const dbConnection = require('../data/dbConfig.js');
 const secrets = require('../config/secret.js');
+const authenticate = require('../auth/restricted-middleware');
 
 const server = express();
 
@@ -89,6 +90,17 @@ function getJwt(admin) {
     }
     return jwt.sign(payload, secrets.jwtSecret, options);
 }
+
+server.put('/:id', authenticate, (req, res) => {
+    const id = req.params.id;
+    const changes = req.body;
+    adminsModel.updateAdmins(id, changes)
+        .then((adminsModel) => {
+            res.status(200).json({ message: `Admin ${id} updated!` })
+        }).catch((err) => {
+            res.status(500).json({ message: 'Error Updating Admin' })
+        });
+});
 
 
 server.get('/all', restricted, (req, res) => {
