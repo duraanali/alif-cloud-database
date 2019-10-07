@@ -21,6 +21,15 @@ server.get('/', authenticate, (req, res) => {
         .catch(err => res.send(err));
 });
 
+server.get('/:id', (req, res) => {
+    const id = req.params.id;
+    classesModel.getClass(id)
+        .then(classModel => {
+            res.json(classModel);
+        })
+        .catch(err => res.send(err));
+});
+
 server.post('/', authenticate, (req, res) => {
     const classesData = req.body;
 
