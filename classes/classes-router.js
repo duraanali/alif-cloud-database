@@ -11,9 +11,9 @@ const server = express();
 server.use(helmet());
 server.use(express.json());
 server.use(cors());
+server.use(authenticate);
 
-
-server.get('/', authenticate, (req, res) => {
+server.get('/',  (req, res) => {
     classesModel.getClasses()
         .then(classesModel => {
             res.json(classesModel);
@@ -21,7 +21,16 @@ server.get('/', authenticate, (req, res) => {
         .catch(err => res.send(err));
 });
 
-server.post('/', authenticate, (req, res) => {
+server.get('/:id',  (req, res) => {
+    const id = req.params.id;
+    classesModel.getClass(id)
+        .then(classModel => {
+            res.json(classModel);
+        })
+        .catch(err => res.send(err));
+});
+
+server.post('/',  (req, res) => {
     const classesData = req.body;
 
     const teacherId = req.body.teacher_id
@@ -37,7 +46,7 @@ server.post('/', authenticate, (req, res) => {
 });
 
 
-server.put('/:id', authenticate, (req, res) => {
+server.put('/:id',  (req, res) => {
     const id = req.params.id;
     const changes = req.body;
     classesModel.updateClass(id, changes)
@@ -48,7 +57,7 @@ server.put('/:id', authenticate, (req, res) => {
         });
 });
 
-server.delete('/:id', authenticate, (req, res) => {
+server.delete('/:id',  (req, res) => {
     const id = req.params.id;
     classesModel.removeClass(id)
         .then(classesModel => {

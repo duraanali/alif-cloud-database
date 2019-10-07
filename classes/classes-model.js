@@ -2,6 +2,7 @@ const db = require('../data/dbConfig');
 
 module.exports = {
     getClasses,
+    getClass,
     postClass,
     updateClass,
     removeClass
@@ -9,6 +10,11 @@ module.exports = {
 
 function getClasses() {
     return db('classes').select('id', 'name', 'subject', 'created', 'teacher_id')
+}
+function getClass(id){
+    return db('classes')
+          .where('id', id)
+          .select('id', 'name', 'subject', 'created', 'teacher_id');
 }
 
 
