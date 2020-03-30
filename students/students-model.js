@@ -8,7 +8,7 @@ module.exports = {
 }
 
 function getStudents() {
-    return db('students').select('id', 'name', 'dob', 'class_id => name', 'parent_id')
+    return db('students').select('id', 'name', 'dob', 'class_id', 'parent_id')
 }
 
 

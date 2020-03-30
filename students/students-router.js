@@ -14,6 +14,7 @@ server.use(cors());
 
 
 server.get('/', authenticate, (req, res) => {
+    console.log("test")
     studentsModel.getStudents()
         .then(studentsModel => {
             res.json(studentsModel);

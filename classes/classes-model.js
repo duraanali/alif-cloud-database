@@ -1,35 +1,35 @@
 const db = require('../data/dbConfig');
 
 module.exports = {
-    getz,
+    getClasses,
     getClass,
     postClass,
     updateClass,
     removeClass
 }
 
-function getz() {
-    return db('z').select('id', 'name', 'subject', 'created', 'teacher_id')
+function getClasses() {
+    return db('classes').select('id', 'name', 'subject', 'created', 'teacher_id')
 }
 function getClass(id) {
-    return db('z')
+    return db('classes')
         .where('id', id)
         .select('id', 'name', 'subject', 'created', 'teacher_id');
 }
 
 
 function postClass(Class) {
-    return db('z').insert(Class);
+    return db('classes').insert(Class);
 }
 
 
 function updateClass(id, changes) {
-    return db('z')
+    return db('classes')
         .where({ id })
         .update(changes);
 }
 function removeClass(id) {
-    return db('z')
+    return db('classes')
         .where('id', id)
         .del();
 }
