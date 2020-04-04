@@ -22,6 +22,19 @@ server.get('/', authenticate, (req, res) => {
         .catch(err => res.send(err));
 });
 
+// get image by user id
+server.get("/:id", authenticate, (req, res) => {
+    const id = req.params.id;
+    studentsModel.getStudentById(id)
+      .then(singleStudent => {
+        res.json(singleStudent);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json({ error: "Could not find student" });
+      });
+  });
+
 server.post('/', authenticate, (req, res) => {
     const studentData = req.body;
 

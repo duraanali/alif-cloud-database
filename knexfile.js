@@ -19,11 +19,9 @@ module.exports = {
   },
 
   production: {
-    client: 'sqlite3',
+    client: 'postgresql',
     useNullAsDefault: true,
-    connection: {
-      filename: './data/database.db3',
-    },
+    connection: process.env.DATABASE_URL,
     pool: {
       afterCreate: (conn, done) => {
         conn.run('PRAGMA foreign_keys = ON', done);
