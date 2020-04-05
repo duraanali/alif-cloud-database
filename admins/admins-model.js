@@ -11,7 +11,7 @@ module.exports = {
 
 
 function find() {
-    return db('admins').select('id', 'name', 'email', 'password');
+    return db('admins').select('id', 'name', 'phone','email', 'password');
 }
 
 function findBy(filter) {

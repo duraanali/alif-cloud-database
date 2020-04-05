@@ -21,6 +21,18 @@ server.get('/', authenticate, (req, res) => {
         .catch(err => res.send(err));
 });
 
+server.get("/:id", authenticate, (req, res) => {
+    const id = req.params.id;
+    parentsModel.getParentById(id)
+      .then(singleParent => {
+        res.json(singleParent);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json({ error: "Could not find parent" });
+      });
+  });
+
 server.post('/', authenticate, (req, res) => {
     const parentData = req.body;
     parentsModel.postParent(parentData)

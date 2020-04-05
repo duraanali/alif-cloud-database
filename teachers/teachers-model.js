@@ -4,14 +4,22 @@ const db = require('../data/dbConfig.js');
 module.exports = {
     add,
     find,
+    findById,
     findBy,
     findById,
 };
 
 
 function find() {
-    return db('teachers').select('id', 'name', 'email', 'password');
+    return db('teachers').select('id', 'name', 'phone', 'email', 'password');
 }
+
+function findById(id) {
+    return db("teachers")
+      .where({ 'id': id })
+      .first();
+  }
+
 
 function findBy(filter) {
     return db('teachers').where(filter);

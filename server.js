@@ -4,7 +4,7 @@ const cors = require('cors');
 const session = require('express-session');
 const KnexSessionStore = require('connect-session-knex')(session);
 
-
+const settingsRouter = require('./settings/settings-router.js');
 const studentsRouter = require('./students/students-router.js');
 const adminsRouter = require('./admins/admins-router.js');
 const teachersRouter = require('./teachers/teachers-router.js');
@@ -45,5 +45,6 @@ server.use('/api/parents', parentsRouter);
 server.use('/api/admins', adminsRouter);
 server.use('/api/teachers', teachersRouter);
 server.use('/api/classes', classesRouter);
+server.use('/api/settings', settingsRouter);
 
 module.exports = server;

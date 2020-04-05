@@ -5,16 +5,19 @@ exports.up = function (knex, Promise) {
             tbl.increments();
             tbl.string('school_name', 255).notNullable();
             tbl.string('address', 255);
+            
         })
         .createTable('admins', tbl => {
             tbl.increments();
             tbl.string('name', 255).notNullable();
+            tbl.integer('phone', 25);
             tbl.string('email', 255).notNullable().unique();
             tbl.varchar('password', 128).notNullable();
         })
         .createTable('teachers', tbl => {
             tbl.increments();
             tbl.string('name', 255).notNullable();
+            tbl.integer('phone', 25);
             tbl.string('email', 255).notNullable().unique();
             tbl.varchar('password', 128).notNullable();
         })

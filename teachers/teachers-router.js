@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
 
 
 const teachersModel = require('./teachers-model.js');
-const restricted = require('../auth/restricted-middleware.js');
+const authenticate = require('../auth/restricted-middleware.js');
 const dbConnection = require('../data/dbConfig.js');
 const secrets = require('../config/secret.js');
 
@@ -76,8 +76,31 @@ server.post('/login', (req, res) => {
         });
 });
 
+  server.get('/all', authenticate, (req, res) => {
+    teachersModel.find()
+        .then(teachers => {
+      
+            res.json(teachers);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({ error: "Could not find teachers" });
+          });
+});
 
+server.get("/all/:id", authenticate, (req, res) => {
+    const id = req.params.id;
+    teachersModel.findById(id)
+      .then(singleTeacher => {
+        res.json(singleTeacher);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json({ error: "Could not find teacher" });
+      });
+  });
 
+  
 function getJwt(admin) {
     const payload = {
         subject: admin.id,
@@ -91,13 +114,6 @@ function getJwt(admin) {
 }
 
 
-server.get('/all', restricted, (req, res) => {
-    teachersModel.find()
-        .then(teachers => {
-            res.json(teachers);
-        })
-        .catch(err => res.send(err));
-});
 
 server.get('/hash', (req, res) => {
     const name = req.query.name;

@@ -8,10 +8,9 @@ const jwt = require('jsonwebtoken');
 
 
 const adminsModel = require('./admins-model.js');
-const restricted = require('../auth/restricted-middleware.js');
+const authenticate = require('../auth/restricted-middleware.js');
 const dbConnection = require('../data/dbConfig.js');
 const secrets = require('../config/secret.js');
-const authenticate = require('../auth/restricted-middleware');
 
 const server = express();
 
@@ -78,6 +77,17 @@ server.post('/login', (req, res) => {
 });
 
 
+server.get("/all/:id", authenticate, (req, res) => {
+    const id = req.params.id;
+    adminsModel.findById(id)
+      .then(singleAdmin => {
+        res.json(singleAdmin);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json({ error: "Could not find Admin" });
+      });
+  });
 
 function getJwt(admin) {
     const payload = {
@@ -103,12 +113,16 @@ server.put('/:id', authenticate, (req, res) => {
 });
 
 
-server.get('/all', restricted, (req, res) => {
+server.get('/all', authenticate, (req, res) => {
     adminsModel.find()
         .then(admins => {
+      
             res.json(admins);
         })
-        .catch(err => res.send(err));
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({ error: "Could not find admins" });
+          });
 });
 
 server.get('/hash', (req, res) => {
