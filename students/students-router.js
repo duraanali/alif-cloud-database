@@ -68,7 +68,7 @@ server.delete('/:id', authenticate, (req, res) => {
         .then(studentsModel => {
             res.status(204).json({ message: `Student ${id} Deleted!` })
         }).catch((err) => {
-            res.status(500).json({ message: 'Error Deleting Question' })
+            res.status(500).json({ message: 'Error Deleting student' })
         });
 });
 

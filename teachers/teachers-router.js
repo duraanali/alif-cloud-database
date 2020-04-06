@@ -114,6 +114,17 @@ function getJwt(admin) {
 }
 
 
+server.put('/all/:id', authenticate, (req, res) => {
+    const id = req.params.id;
+    const changes = req.body;
+    teachersModel.updateTeacher(id, changes)
+        .then((teachersModel) => {
+            res.status(200).json({ message: `teacher ${id} updated!` })
+        }).catch((err) => {
+            res.status(500).json({ message: 'Error Updating teacher' })
+        });
+});
+
 
 server.get('/hash', (req, res) => {
     const name = req.query.name;
