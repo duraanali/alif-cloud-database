@@ -36,11 +36,12 @@ function add(teacher) {
         });
 }
 
-function updateTeacher(id, changes) {
+function updateTeacher(teachers) {
     return db('teachers')
-        .where({ id })
-        .update(changes);
+        .update(teachers, 'id')
+
 }
+
 
 
 function findById(id) {
