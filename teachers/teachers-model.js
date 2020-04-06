@@ -7,6 +7,8 @@ module.exports = {
     findById,
     findBy,
     findById,
+    updateTeacher,
+    removeTeacher
 };
 
 
@@ -45,4 +47,10 @@ function findById(id) {
     return db('teachers')
         .where({ id })
         .first();
+}
+
+function removeTeacher(id) {
+    return db('teachers')
+        .where('id', id)
+        .del();
 }

@@ -114,17 +114,22 @@ function getJwt(admin) {
 }
 
 
-server.put('/all/:id', authenticate, (req, res) => {
-    const id = req.params.id;
-    const changes = req.body;
-    teachersModel.updateTeacher(id, changes)
-        .then((teachersModel) => {
-            res.status(200).json({ message: `teacher ${id} updated!` })
-        }).catch((err) => {
-            res.status(500).json({ message: 'Error Updating teacher' })
+
+
+server.put('/all/:id', (req, res) => {
+    let { name, email, password } = req.body;
+    console.log(req.body)
+    const hash = bcrypt.hashSync(password, 8); // it's 2 ^ 8, not 8 rounds
+
+    teachersModel.updateTeacher({ name, email, password: hash })
+        .then(saved => {
+            res.status(201).json(saved);
+        })
+        .catch(error => {
+            console.log(error);
+            res.status(500).json(error);
         });
 });
-
 
 server.get('/hash', (req, res) => {
     const name = req.query.name;
@@ -149,6 +154,18 @@ server.get('/logout', (req, res) => {
     } else {
         res.status(200).json({ message: 'already logged out' });
     }
+});
+
+server.delete('/all/:id', authenticate, (req, res) => {
+    const id = req.params.id;
+    console.log(id)
+    teachersModel.removeTeacher(id)
+        .then(teachersModel => {
+            console.log(teachersModel)
+            res.status(204).json({ message: `teacher ${id} Deleted!` })
+        }).catch((err) => {
+            res.status(500).json({ message: 'Error Deleting teacher' })
+        });
 });
 
 module.exports = server;
