@@ -14,7 +14,13 @@ exports.up = function (knex, Promise) {
             tbl.string('email', 255).notNullable().unique();
             tbl.varchar('password', 128).notNullable();
         })
-        
+        .createTable('teachers', tbl => {
+            tbl.increments();
+            tbl.string('name', 255).notNullable();
+            tbl.integer('phone', 25);
+            tbl.string('email', 255).notNullable().unique();
+            tbl.varchar('password', 128).notNullable();
+        })
         .createTable('classes', tbl => {
             tbl.increments();
             tbl.string('name', 255).notNullable();
@@ -41,14 +47,6 @@ exports.up = function (knex, Promise) {
 
         })
 
-        .createTable('teachers', tbl => {
-            tbl.increments();
-            tbl.string('name', 255).notNullable();
-            tbl.integer('phone', 25);
-            tbl.string('email', 255).notNullable().unique();
-            tbl.varchar('password', 128).notNullable();
-        })
-        
         .createTable('students', tbl => {
             tbl.increments();
             tbl.string('name', 255).notNullable();
