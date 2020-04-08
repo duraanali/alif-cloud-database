@@ -33,8 +33,7 @@ exports.up = function (knex, Promise) {
                 .notNullable()
                 .references('id')
                 .inTable('teachers')
-                .onDelete('RESTRICT') // if the PK record is deleted
-                .onUpdate('CASCADE'); // if the PK value updates
+   
         })
         .createTable('students', tbl => {
             tbl.increments();
@@ -47,8 +46,7 @@ exports.up = function (knex, Promise) {
                 .notNullable()
                 .references('id')
                 .inTable('classes')
-                .onDelete('RESTRICT') // if the PK record is deleted
-                .onUpdate('CASCADE'); // if the PK value updates
+     
 
             tbl
                 .integer('parent_id')
@@ -56,8 +54,7 @@ exports.up = function (knex, Promise) {
                 .notNullable()
                 .references('id')
                 .inTable('parents')
-                .onDelete('CASCADE') // if the PK record is deleted
-                .onUpdate('CASCADE'); // if the PK value updates
+       
         })
         .createTable('parents', tbl => {
             tbl.increments();
