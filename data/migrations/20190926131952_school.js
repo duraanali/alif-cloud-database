@@ -36,15 +36,7 @@ exports.up = function (knex, Promise) {
                 .onDelete('RESTRICT') // if the PK record is deleted
                 .onUpdate('CASCADE'); // if the PK value updates
         })
-        .createTable('students', tbl => {
-            tbl.increments();
-            tbl.string('name', 255).notNullable();
-            tbl.date('dob', 25);
-            // Foreign Key
-            
-            tbl.integer('class_id').unsigned().inTable('classes').references('id');
-            tbl.integer('parent_id').unsigned().inTable('parents').references('id');
-        })
+    
         .createTable('parents', tbl => {
             tbl.increments();
             tbl.string('name', 255).notNullable();
@@ -55,12 +47,38 @@ exports.up = function (knex, Promise) {
 
         })
 
+        .createTable('students', tbl => {
+            tbl.increments();
+            tbl.string('name', 255).notNullable();
+            tbl.date('dob', 25);
+            // Foreign Key
+            tbl
+                .integer('class_id')
+                .unsigned()
+                .notNullable()
+                .references('id')
+                .inTable('classes')
+                .onDelete('RESTRICT') // if the PK record is deleted
+                .onUpdate('CASCADE'); // if the PK value updates
+
+            tbl
+                .integer('parent_id')
+                .unsigned()
+                .notNullable()
+                .references('id')
+                .inTable('parents')
+                .onDelete('RESTRICT') // if the PK record is deleted
+                .onUpdate('CASCADE'); // if the PK value updates
+
+                
+        })
+
 };
 
 exports.down = function (knex, Promise) {
     return knex.schema
-        .dropTableIfExists('parents')
         .dropTableIfExists('students')
+        .dropTableIfExists('parents')
         .dropTableIfExists('classes')
         .dropTableIfExists('teachers')
         .dropTableIfExists('admins')
