@@ -33,28 +33,17 @@ exports.up = function (knex, Promise) {
                 .notNullable()
                 .references('id')
                 .inTable('teachers')
-   
+                .onDelete('RESTRICT') // if the PK record is deleted
+                .onUpdate('CASCADE'); // if the PK value updates
         })
         .createTable('students', tbl => {
             tbl.increments();
             tbl.string('name', 255).notNullable();
             tbl.date('dob', 25);
             // Foreign Key
-            tbl
-                .integer('class_id')
-                .unsigned()
-                .notNullable()
-                .references('id')
-                .inTable('classes')
-     
-
-            tbl
-                .integer('parent_id')
-                .unsigned()
-                .notNullable()
-                .references('id')
-                .inTable('parents')
-       
+            
+            tbl.integer('class_id').unsigned().inTable('classes').references('id');
+            tbl.integer('parent_id').unsigned().inTable('parents').references('id');
         })
         .createTable('parents', tbl => {
             tbl.increments();
