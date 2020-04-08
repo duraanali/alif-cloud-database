@@ -6,124 +6,144 @@ exports.seed = function (knex) {
       // Inserts seed entries
       return knex('parents').insert([{
         "id": 1,
-        "name": "Guthrey Crawley",
-        "address": "02160 Maryland Junction",
-        "spouse_name": "Chlo Wooff",
-        "spouse_phone": 530-788-5495
+        "name": "Valerie Carnalan",
+        "phone": 8369678245,
+        "address": "46744 Morningstar Lane",
+        "spouse_name": "Cyril Stothart",
+        "spouse_phone": 4625293920
       }, {
         "id": 2,
-        "name": "Hamish Molloy",
-        "address": "76713 Huxley Alley",
-        "spouse_name": "Bonnee Ogger",
-        "spouse_phone": 355-311-0607
+        "name": "Rosalia Kohrsen",
+        "phone": "7335682090",
+        "address": "112 Stuart Circle",
+        "spouse_name": "Bail Seemmonds",
+        "spouse_phone": 3047877224
       }, {
         "id": 3,
-        "name": "Laraine Giovani",
-        "address": "3 Continental Road",
-        "spouse_name": "Tersina Ugoni",
-        "spouse_phone": 305-594-8505
+        "name": "Jobina Giblin",
+        "phone": 2606033785,
+        "address": "46349 Mcbride Street",
+        "spouse_name": "Kevin Belden",
+        "spouse_phone": 1107851644
       }, {
         "id": 4,
-        "name": "Nolly Butter",
-        "address": "22736 Park Meadow Drive",
-        "spouse_name": "Alaster Honsch",
-        "spouse_phone": 535-573-5734
+        "name": "Hephzibah Measor",
+        "phone": 2354989529,
+        "address": "78828 Badeau Plaza",
+        "spouse_name": "Bunny Chazier",
+        "spouse_phone": 1438248301
       }, {
         "id": 5,
-        "name": "Vickie Cargill",
-        "address": "8 Meadow Vale Terrace",
-        "spouse_name": "Karlotta Dincke",
-        "spouse_phone": 635-511-2201
+        "name": "Llewellyn Piesing",
+        "phone": 1151348065,
+        "address": "8187 Karstens Court",
+        "spouse_name": "Elisha McMillian",
+        "spouse_phone": 5054575855
       }, {
         "id": 6,
-        "name": "Bevon Bushe",
-        "address": "98962 Everett Road",
-        "spouse_name": "Jeramie Godsmark",
-        "spouse_phone": 535-865-2617
+        "name": "Joanie L'Hommeau",
+        "phone": 9152531549,
+        "address": "25379 Linden Circle",
+        "spouse_name": "Cleveland Spurden",
+        "spouse_phone": 7868425950
       }, {
         "id": 7,
-        "name": "Allard Hanby",
-        "address": "88 Kennedy Avenue",
-        "spouse_name": "Walsh Lascell",
-        "spouse_phone": 547-851-7961
+        "name": "Mikkel Jerrom",
+        "phone": 6653066726,
+        "address": "6299 Caliangt Court",
+        "spouse_name": "Con Wrought",
+        "spouse_phone": 2904554078
       }, {
         "id": 8,
-        "name": "Adrian Lubeck",
-        "address": "5230 Oxford Junction",
-        "spouse_name": "Felipa Pridie",
-        "spouse_phone": 753-622-0760
+        "name": "Ham Ughi",
+        "phone": 5843627320,
+        "address": "56 Bartillon Crossing",
+        "spouse_name": "Kimmi Marusik",
+        "spouse_phone": 9934331657
       }, {
         "id": 9,
-        "name": "Culley Broxup",
-        "address": "9235 Bluestem Pass",
-        "spouse_name": "Ollie Millar",
-        "spouse_phone": 162-494-4050
+        "name": "Kinsley Tollet",
+        "phone": 7834162272,
+        "address": "707 Northwestern Parkway",
+        "spouse_name": "Cordie Jenking",
+        "spouse_phone": 3441254326
       }, {
         "id": 10,
-        "name": "John Evesque",
-        "address": "9395 Pond Plaza",
-        "spouse_name": "Goldi Sempill",
-        "spouse_phone": 501-474-2956
+        "name": "Roseanna Ashburner",
+        "phone": 4899658360,
+        "address": "70 Tennyson Place",
+        "spouse_name": "Giraldo Lembrick",
+        "spouse_phone": 9658173137
       }, {
         "id": 11,
-        "name": "Meghan Minter",
-        "address": "9 Banding Terrace",
-        "spouse_name": "Ruperta Earsman",
-        "spouse_phone": 281-585-3954
+        "name": "Leah Horsley",
+        "phone": 7182169492,
+        "address": "0752 Moose Circle",
+        "spouse_name": "Raynell Threadgall",
+        "spouse_phone": 3488552798
       }, {
         "id": 12,
-        "name": "Katharine Gillivrie",
-        "address": "44781 Alpine Circle",
-        "spouse_name": "Alida Ings",
-        "spouse_phone": 457-487-4421
+        "name": "Neda Follows",
+        "phone": 3217719891,
+        "address": "8 Lerdahl Parkway",
+        "spouse_name": "Corby Brideoke",
+        "spouse_phone": 4589398915
       }, {
         "id": 13,
-        "name": "Rosanna Fawke",
-        "address": "078 Cody Plaza",
-        "spouse_name": "Katuscha Camois",
-        "spouse_phone": 269-642-9259
+        "name": "Casey Lalevee",
+        "phone": 7013914556,
+        "address": "43795 Eastwood Hill",
+        "spouse_name": "Ky Sutheran",
+        "spouse_phone": 3165524287
       }, {
         "id": 14,
-        "name": "Otha Maseyk",
-        "address": "58 Larry Circle",
-        "spouse_name": "Annadiana Crust",
-        "spouse_phone": 972-797-0767
+        "name": "Amery Woodroff",
+        "phone": 5076867529,
+        "address": "0003 Ryan Point",
+        "spouse_name": "Bank Creagh",
+        "spouse_phone": 5038103439
       }, {
         "id": 15,
-        "name": "Matilda Suddick",
-        "address": "23164 Lakeland Parkway",
-        "spouse_name": "Danyelle Brittian",
-        "spouse_phone": 675-298-5821
+        "name": "Faustine Caras",
+        "phone": 1451929432,
+        "address": "1 Mayfield Pass",
+        "spouse_name": "Ash Facher",
+        "spouse_phone": 7539922241
       }, {
         "id": 16,
-        "name": "Desmund Collings",
-        "address": "3107 Hagan Drive",
-        "spouse_name": "Katlin Drohan",
-        "spouse_phone": 322-780-8300
+        "name": "Hetty Cottesford",
+        "phone": 7803233451,
+        "address": "7270 Gina Plaza",
+        "spouse_name": "Farris Petrushanko",
+        "spouse_phone": 7295053660
       }, {
         "id": 17,
-        "name": "Charline Rough",
-        "address": "70374 Everett Place",
-        "spouse_name": "Cos Dericut",
-        "spouse_phone": 594-250-4282
+        "name": "Lorita Giannasi",
+        "phone": 7362218949,
+        "address": "968 Washington Park",
+        "spouse_name": "Benny Thirtle",
+        "spouse_phone": 3635921101
       }, {
         "id": 18,
-        "name": "Jo ann Gobolos",
-        "address": "4228 Blaine Hill",
-        "spouse_name": "Brewster Jemmison",
-        "spouse_phone": 971-391-2442
+        "name": "Pammy Drew",
+        "phone": 1581916236,
+        "address": "00 Schiller Point",
+        "spouse_name": "Kirsten Physic",
+        "spouse_phone": 8965611991
       }, {
         "id": 19,
-        "name": "Shantee Arlt",
-        "address": "20390 Kennedy Alley",
-        "spouse_name": "Minnaminnie Finkle",
-        "spouse_phone": 538-737-5217
+        "name": "Jdavie Ismirnioglou",
+        "phone": 5884261141,
+        "address": "5599 Merry Drive",
+        "spouse_name": "Madeline Senten",
+        "spouse_phone": 8737621676
       }, {
         "id": 20,
-        "name": "Faustine Juanico",
-        "address": "59270 2nd Parkway",
-        "spouse_name": "Vivyanne Matusov",
-        "spouse_phone": 888-594-5763
+        "name": "Chance Alesin",
+        "phone": 9253836250,
+        "address": "978 Graceland Alley",
+        "spouse_name": "Brandise Doy",
+        "spouse_phone": 8072856223
       }]);
     });
 };
