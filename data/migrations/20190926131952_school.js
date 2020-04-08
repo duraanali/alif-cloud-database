@@ -56,7 +56,7 @@ exports.up = function (knex, Promise) {
                 .notNullable()
                 .references('id')
                 .inTable('parents')
-                .onDelete('RESTRICT') // if the PK record is deleted
+                .onDelete('CASCADE') // if the PK record is deleted
                 .onUpdate('CASCADE'); // if the PK value updates
         })
         .createTable('parents', tbl => {
@@ -73,8 +73,8 @@ exports.up = function (knex, Promise) {
 
 exports.down = function (knex, Promise) {
     return knex.schema
-        .dropTableIfExists('students')
         .dropTableIfExists('parents')
+        .dropTableIfExists('students')
         .dropTableIfExists('classes')
         .dropTableIfExists('teachers')
         .dropTableIfExists('admins')
