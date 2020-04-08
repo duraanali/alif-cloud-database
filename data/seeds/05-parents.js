@@ -14,7 +14,7 @@ exports.seed = function (knex) {
       }, {
         "id": 2,
         "name": "Rosalia Kohrsen",
-        "phone": "7335682090",
+        "phone": 7335682090,
         "address": "112 Stuart Circle",
         "spouse_name": "Bail Seemmonds",
         "spouse_phone": 3047877224
