@@ -40,7 +40,7 @@ exports.up = function (knex, Promise) {
         .createTable('parents', tbl => {
             tbl.increments();
             tbl.string('name', 255).notNullable();
-            tbl.integer('phone', 25).notNullable();
+            tbl.integer('phone', 50).notNullable();
             tbl.string('address', 25);
             tbl.string('spouse_name', 25);
             tbl.integer('spouse_phone', 25);
