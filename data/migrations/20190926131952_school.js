@@ -77,10 +77,10 @@ exports.up = function (knex, Promise) {
 
 exports.down = function (knex, Promise) {
     return knex.schema
-        .dropTableIfExists('students')
-        .dropTableIfExists('parents')
         .dropTableIfExists('classes')
+        .dropTableIfExists('parents')
         .dropTableIfExists('teachers')
+        .dropTableIfExists('students')
         .dropTableIfExists('admins')
         .dropTableIfExists('settings');
 };
