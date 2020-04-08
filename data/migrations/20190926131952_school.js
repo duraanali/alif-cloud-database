@@ -80,7 +80,7 @@ exports.down = function (knex, Promise) {
         .dropTableIfExists('settings')
         .dropTableIfExists('admins')
         .dropTableIfExists('students')
-        .dropTableIfExists('teachers')
         .dropTableIfExists('parents')
-        .dropTableIfExists('classes');
+        .dropTableIfExists('classes')
+        .dropTableIfExists('teachers');
 };
