@@ -48,7 +48,7 @@ exports.up = function (knex, Promise) {
             tbl.string('email', 255).notNullable().unique();
             tbl.varchar('password', 128).notNullable();
         })
-
+        
         .createTable('students', tbl => {
             tbl.increments();
             tbl.string('name', 255).notNullable();
@@ -80,9 +80,9 @@ exports.up = function (knex, Promise) {
 exports.down = function (knex, Promise) {
     return knex.schema
         .dropTableIfExists('students')
-        .dropTableIfExists('teachers')
         .dropTableIfExists('parents')
         .dropTableIfExists('classes')
+        .dropTableIfExists('teachers')
         .dropTableIfExists('admins')
         .dropTableIfExists('settings');
 };
