@@ -142,6 +142,7 @@ server.get('/logout', (req, res) => {
                         'you can check out anytime you like, but you can never leave',
                 });
             } else {
+                console.log(req.session)
                 res.status(200).json({ message: 'Hey, Bye, come back soon!' });
             }
         });
