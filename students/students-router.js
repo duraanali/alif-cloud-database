@@ -48,7 +48,7 @@ server.post('/', authenticate, (req, res) => {
         }).catch((err) => {
             res.status(500).json({ message: 'Error adding student' })
         });
-});
+}); 
 
 
 server.put('/:id', authenticate, (req, res) => {
