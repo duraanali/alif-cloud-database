@@ -3,32 +3,32 @@ exports.up = function (knex, Promise) {
     return knex.schema
         .createTable('settings', tbl => {
             tbl.increments();
-            tbl.string('school_name', 255).notNullable();
-            tbl.string('address', 255);
+            tbl.text('school_name').notNullable();
+            tbl.text('address');
             
         })
         .createTable('admins', tbl => {
             tbl.increments();
-            tbl.string('name', 255).notNullable();
-            tbl.integer('phone', 25);
-            tbl.string('email', 255).notNullable().unique();
+            tbl.text('name').notNullable();
+            tbl.bigInteger('phone');
+            tbl.text('email').notNullable().unique();
             tbl.varchar('password', 128).notNullable();
         })
         .createTable('teachers', tbl => {
             tbl.increments();
-            tbl.string('name', 255).notNullable();
-            tbl.integer('phone', 25);
-            tbl.string('email', 255).notNullable().unique();
+            tbl.text('name').notNullable();
+            tbl.bigInteger('phone');
+            tbl.text('email').notNullable().unique();
             tbl.varchar('password', 128).notNullable();
         })
         .createTable('classes', tbl => {
             tbl.increments();
-            tbl.string('name', 255).notNullable();
-            tbl.string('subject', 255);
+            tbl.text('name').notNullable();
+            tbl.text('subject');
             tbl.date('created', 128);
             // Foreign Key
             tbl
-                .integer('teacher_id')
+                .bigInteger('teacher_id')
                 .unsigned()
                 .notNullable()
                 .references('id')
@@ -39,21 +39,21 @@ exports.up = function (knex, Promise) {
     
         .createTable('parents', tbl => {
             tbl.increments();
-            tbl.string('name', 255).notNullable();
+            tbl.text('name').notNullable();
             tbl.bigInteger('phone', 50).notNullable();
-            tbl.string('address', 25);
-            tbl.string('spouse_name', 25);
-            tbl.bigInteger('spouse_phone', 25);
+            tbl.text('address');
+            tbl.text('spouse_name');
+            tbl.bigInteger('spouse_phone');
 
         })
 
         .createTable('students', tbl => {
             tbl.increments();
-            tbl.string('name', 255).notNullable();
-            tbl.date('dob', 25);
+            tbl.text('name').notNullable();
+            tbl.date('dob');
             // Foreign Key
             tbl
-                .integer('class_id')
+                .bigInteger('class_id')
                 .unsigned()
                 .notNullable()
                 .references('id')
@@ -62,7 +62,7 @@ exports.up = function (knex, Promise) {
                 .onUpdate('CASCADE'); // if the PK value updates
 
             tbl
-                .integer('parent_id')
+                .bigInteger('parent_id')
                 .unsigned()
                 .notNullable()
                 .references('id')
